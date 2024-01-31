@@ -22,3 +22,7 @@ label{
 .p-button{
   background:  var(--main-color) ;
 }
+
+.cdk-overlay-pane{
+  overflow: auto
+}
