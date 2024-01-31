@@ -1,0 +1,78 @@
+<div class="dialog-wrapper">
+  <div class="form-header">
+    <h3>Добавление данных о экспертах по оценке и руководителях</h3>
+    <div class="close-icon" (click)="close()">
+      <svg viewPort="0 0 20 20" version="1.1"
+           xmlns="http://www.w3.org/2000/svg">
+        <line x1="1" y1="21"
+              x2="21" y2="1"
+              stroke="black"
+              stroke-width="2"/>
+        <line x1="1" y1="1"
+              x2="21" y2="21"
+              stroke="black"
+              stroke-width="2"/>
+      </svg>
+    </div>
+  </div>
+  <form [formGroup]="userForm" class="form-container" (submit)="onSubmit()">
+    <div class="form-item form-option">
+      <label>Дата регистрации</label>
+      <p-calendar id="add-date"
+                  formControlName="create"
+                  [showIcon]="true"
+                  dateFormat="dd.mm.yy"></p-calendar>
+      <span *ngIf="showError('create')" class="error">Обязательное поле</span>
+    </div>
+    <div class="form-item form-option">
+      <label>ФИО</label>
+      <input id="add-fullName"
+             type="text"
+             pInputText
+             formControlName="fio"
+             placeholder="Введите ФИО участника"/>
+      <span *ngIf="showError('fio')" class="error">Обязательное поле</span>
+    </div>
+    <div class="form-item form-option">
+      <label>Должность</label>
+      <p-dropdown
+        id="position"
+        formControlName="position"
+        [options]="(positions$ | async) || []"
+        placeholder="Введите должность участника"
+        [editable]="true"
+      ></p-dropdown>
+      <span *ngIf="showError('position')" class="error">Обязательное поле</span>
+    </div>
+    <div class="form-item form-option">
+      <label>Почта (логин)</label>
+      <input id="email"
+             type="text"
+             pInputText
+             formControlName="email"
+             placeholder="Введите почту (логин) участника"/>
+      <span *ngIf="showError('email') && !userForm.get('email')?.value" class="error">Обязательное поле</span>
+      <span *ngIf="showError('email') && userForm.get('email')?.hasError('email')" class="error">Некорректный адрес электронной почты</span>
+    </div>
+    <div class="form-item form-option">
+      <label>Пароль</label>
+      <input id="password"
+             type="password"
+             pInputText
+             formControlName="password"
+             placeholder="Введите пароль"/>
+      <span *ngIf="showError('password')" class="error">Обязательное поле</span>
+    </div>
+    <div class="form-item form-option">
+      <label>Телефон, привязанный к мессенджеру</label>
+      <input id="phone"
+             type="number"
+             pInputText
+             formControlName="phone"
+             placeholder="Введите номер телефона"/>
+      <span *ngIf="showError('phone')" class="error">Обязательное поле</span>
+      <span *ngIf="showError('phone') && userForm.get('phone')?.hasError('phone')" class="error">Укажите номер телефона в формате 11 цифр</span>
+    </div>
+    <p-button type="submit" class="save-button">Сохранить</p-button>
+  </form>
+</div>

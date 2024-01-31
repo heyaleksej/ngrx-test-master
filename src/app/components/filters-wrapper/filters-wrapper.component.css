@@ -1,0 +1,26 @@
+.filters-label{
+  text-align: center;
+  padding: 2rem;
+}
+
+.filters-container{
+  display: flex;
+  justify-content: center;
+}
+
+.filters-wrapper {
+  display: flex;
+  gap: 48px;
+  align-items: end;
+}
+
+.filter-item ::ng-deep .p-button{
+  width: 100%;
+  display: flex;
+  background-color: #4c5ca7;
+  justify-content: center;
+}
+
+
+
+

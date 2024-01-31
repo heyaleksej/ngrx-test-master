@@ -1,0 +1,11 @@
+<div class="header flex-row">
+  <div class="header_menu flex-row">
+    <mat-tab-group [selectedIndex]="activeTab" dynamicHeight="false">
+      <mat-tab *ngFor="let tab of tabs" [label]="tab.label">
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div class="header_support">
+    <span style="font-weight: bold">Техподдержка</span>
+  </div>
+</div>

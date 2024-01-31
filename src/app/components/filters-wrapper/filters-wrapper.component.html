@@ -1,0 +1,48 @@
+<div class="filters-container">
+  <div style="display: block">
+    <h2 class="filters-label">Список экспертов по оценке и руководителей</h2>
+    <form [formGroup]="filterForm" (submit)="onSubmit()" class="filters-wrapper">
+      <div class="form-item">
+        <label>ID</label>
+        <p-dropdown
+          formControlName="id"
+          [options]="(ids$ | async) || []"
+          placeholder="Введите ID"
+          [editable]="true"
+        ></p-dropdown>
+      </div>
+
+      <div class="form-item">
+        <label>ФИО</label>
+        <p-dropdown
+          formControlName="fio"
+          [options]="(fullNames$ | async) || []"
+          placeholder="Введите ФИО участника"
+          [editable]="true"
+        ></p-dropdown>
+      </div>
+
+      <div class="form-item">
+        <label>Должность</label>
+        <p-dropdown
+          formControlName="position"
+          [options]="(positions$ | async) || []"
+          placeholder="Введите должность участника"
+          [editable]="true"
+        ></p-dropdown>
+      </div>
+      <div class="form-item">
+        <label>Почта (логин)</label>
+        <p-dropdown
+          formControlName="email"
+          [options]="(emails$ | async) || []"
+          placeholder="Введите логин участника"
+          [editable]="true"
+        ></p-dropdown>
+      </div>
+      <div class="form-item">
+        <p-button type="submit">Применить фильтры</p-button>
+      </div>
+    </form>
+  </div>
+</div>

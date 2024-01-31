@@ -1,0 +1,54 @@
+.form-container{
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  align-items: center;
+}
+
+.dialog-wrapper{
+  width: 100%;
+  display: block;
+  overflow-x: hidden;
+}
+
+.form-option {
+  padding: 1rem 0;
+  max-width: 50% ;
+  min-width: 50%;
+}
+
+.save-button{
+  display: flex;
+  justify-content: center;
+}
+
+.form-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  color: var(--main-color)
+
+}
+
+.error{
+  color: red;
+  padding: 8px;
+}
+
+.close-icon{
+  height: 60px;
+  width: 12px;
+}
+
+::ng-deep .p-calendar-w-btn .p-datepicker-trigger {
+  color: var(--main-color);
+  background-color: white;
+  border: 1px solid #ced4da;
+  border-left: none;
+}
+::ng-deep .p-calendar,
+::ng-deep .p-dropdown {
+  width: 100%;
+}
+

@@ -1,0 +1,76 @@
+  <div class="users-container">
+    <table mat-table [dataSource]="allUsers" class="mat-elevation-z8" matSort matSortStart="desc" (matSortChange)="onSortChange($event)">
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle($event) : null"
+                        color="primary"
+                        [checked]="selection.hasValue() && isAllSelected()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row" [class.selected-row]="selection.isSelected(row)">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        color="primary"
+                        (change)="$event ? checkboxHandler(row) : null"
+                        [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let user">{{user.id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="create">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Дата регистрации</th>
+        <td mat-cell *matCellDef="let user">{{user.create}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="fio">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ФИО</th>
+        <td mat-cell *matCellDef="let user">{{user.fio}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Должность</th>
+        <td mat-cell *matCellDef="let user">{{user.position}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Почта (логин)</th>
+        <td mat-cell *matCellDef="let user">
+          <a [href]="'mailto:'+ user.email">{{user.email}}</a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="password">
+        <th mat-header-cell *matHeaderCellDef>Пароль</th>
+        <td mat-cell *matCellDef="let user">
+          <div class="custom-password-field">
+            {{ '*******' }}
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Телефон, привязанный к мессенджеру</th>
+        <td mat-cell *matCellDef="let user">{{user.phone | phonePipe}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let user; columns: displayedColumns;"></tr>
+    </table>
+  <div class="action-buttons">
+    <p-button *ngIf="selection.selected.length == 1" (click)="onAddHandler(selection.selected[0])">Редактировать</p-button>
+    <p-button *ngIf="selection.selected.length" (click)="removeUser()">Удалить выбранные</p-button>
+    <p-button (click)="onAddHandler()">Добавить пользователя</p-button>
+  </div>
+</div>
+
+  <mat-paginator  #paginator [pageSize]="10"
+                  [length]="allUsers.length"
+                  [pageSizeOptions]="[10, 25, 50]"
+                  showFirstLastButtons
+                  (page)="onPageChange($event)">
+  </mat-paginator>
+

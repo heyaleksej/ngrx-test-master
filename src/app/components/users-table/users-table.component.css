@@ -1,0 +1,14 @@
+.users-container{
+  margin: 40px 0;
+}
+
+:host ::ng-deep .mat-row.selected-row {
+  background-color: gainsboro;
+}
+
+.action-buttons{
+  display: flex;
+  gap: 1rem;
+  justify-content: end;
+  padding: 1rem;
+}

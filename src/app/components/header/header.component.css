@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 2px solid gainsboro;
+  box-sizing: border-box;
+}
+
+.header_menu {
+  text-align: center;
+  min-height: 50px;
+  margin-bottom: -4px;
+}
+
+.header_support {
+  position: absolute;
+  right: 40px;
+}
+
+:host ::ng-deep .mat-ripple-element {
+  position: absolute;
+}
