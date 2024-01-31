@@ -1,19 +1,20 @@
 # Test task
-This Angular project is a test task designed to showcase your skills in implementing a table with user management functionality using Angular, Ngrx, and Angular Material.
+This Angular project is a test task designed to showcase skills in implementing a table with user management functionality using Angular, Ngrx, and Angular Material.
 
 ## 🛠 Tech Stack:
 
 - **Angular 16**
 - **Ngrx**
-- **RxJS**- 
+- **RxJS**-
 - **Angular Material**
 - **PrimeNG**
 
 ## 📌 Features:
-- Optimization for different screens
-- Custom select
-- Notifications
-- Images switcher
+
+- Display a list of users.
+- Implement sorting functionality for the table.
+- Allow users to be created and deleted.
+- Utilize Ngrx for state management.
 ______
 ## Project setup
 ```
